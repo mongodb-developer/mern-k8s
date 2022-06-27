@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-demo-k8s-frontend
+  labels:
+    app: mern-demo-k8s
+    component: frontend
+spec:
+  selector:
+    component: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http

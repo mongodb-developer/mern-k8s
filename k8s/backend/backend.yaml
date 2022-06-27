@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: mern-demo-k8s-backend
-          image: cedric/mern-demo-k8s-backend
+          image: cedricclyburn/mern-demo-k8s-backend
           ports: 
             - containerPort: 5050
           env: 
