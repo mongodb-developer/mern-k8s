@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-demo-k8s-back
+  labels:
+    app: mern-demo-k8s
+    component: back
+spec:
+  selector:
+    component: back
+  ports:
+    - port: 80
+      targetPort: 5050
+      protocol: TCP
+      name: http

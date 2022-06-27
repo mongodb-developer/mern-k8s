@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-demo-k8s-backend
+  labels:
+    app: mern-demo-k8s
+    component: backend
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      component: backend
+  template:
+    metadata: 
+      labels:
+        app: mern-demo-k8s
+        component: backend
+    spec:
+      containers:
+        - name: mern-demo-k8s-backend
+          image: cedric/mern-demo-k8s-backend
+          ports: 
+            - containerPort: 5050
+          env: 
+            - name: PORT
+              value: "5050"
+            - name: CONN_STR
+              value: ""
