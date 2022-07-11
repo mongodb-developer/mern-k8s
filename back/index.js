@@ -35,6 +35,11 @@ const log = (route, message) => {
     const log = `[${date} ${time}] - (${route}) - ${message}`;
     console.log(log);
  }
+
+app.get("/health", (req, res) => {
+  log("/health", "GET request");
+  res.send({status: "Ok", dbConnected: DB_CONNECTED}).status(200);
+});
  
 app.get("/entries", async (req, res) => {
     log("/entries", "GET request");

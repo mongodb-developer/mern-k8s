@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mern-demo-k8s-backend
+  name: mern-k8s-back
   labels:
-    app: mern-demo-k8s
-    component: backend
+    app: mern-k8s
+    component: back
 spec:
   replicas: 2
   selector: 
     matchLabels:
-      component: backend
+      component: back
   template:
     metadata: 
       labels:
-        app: mern-demo-k8s
-        component: backend
+        app: mern-k8s
+        component: back
     spec:
       containers:
-        - name: mern-demo-k8s-backend
-          image: cedricclyburn/mern-demo-k8s-backend
+        - name: mern-k8s-back
+          image: cedricclyburn/mern-k8s-back
           ports: 
-            - containerPort: 5050
+            - containerPort: 5000
           env: 
             - name: PORT
-              value: "5050"
+              value: "5000"
             - name: CONN_STR
-              value: ""
+              value: "$ATLAS_CONNECTION_STRING"
