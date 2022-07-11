@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-demo-k8s-backend
+  labels:
+    app: mern-demo-k8s
+    component: backend
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      component: backend
+  template:
+    metadata: 
+      labels:
+        app: mern-demo-k8s
+        component: backend
+    spec:
+      containers:
+        - name: mern-demo-k8s-backend
+          image: cedricclyburn/mern-demo-k8s-backend
+          ports: 
+            - containerPort: 5050
+          env: 
+            - name: PORT
+              value: "5050"
+            - name: CONN_STR
+              value: ""
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-k8s-back
+  labels:
+    app: mern-k8s
+    component: back
+spec:
+  selector:
+    component: back
+  ports:
+    - port: 80
+      targetPort: 5050
+      protocol: TCP
+      name: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-demo-k8s-frontend
+  labels:
+    app: mern-demo-k8s
+    component: frontend
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      component: frontend
+  template:
+    metadata: 
+      labels:
+        app: mern-demo-k8s
+        component: frontend
+    spec:
+      containers:
+        - name: mern-demo-k8s-frontend
+          image: cedricclyburn/mern-demo-k8s-frontend
+          ports: 
+            - containerPort: 80
+          env: 
+            - name: BASE_URL
+              value: "http://api.mern-k8s.com"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-k8s-front
+  labels:
+    app: mern-k8s
+    component: front
+spec:
+  selector:
+    component: front
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mern-k8s-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: mern-k8s-back
+                port:
+                  number: 80
+          - path: /()(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: mern-k8s-front
+                port:
+                  number: 80
