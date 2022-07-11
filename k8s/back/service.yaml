@@ -10,6 +10,6 @@ spec:
     component: back
   ports:
     - port: 80
-      targetPort: 5050
+      targetPort: 5000
       protocol: TCP
       name: http
