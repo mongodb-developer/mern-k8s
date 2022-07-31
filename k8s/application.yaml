@@ -20,10 +20,10 @@ spec:
         - name: mern-k8s-back
           image: cedricclyburn/mern-k8s-back
           ports: 
-            - containerPort: 5050
+            - containerPort: 3000
           env: 
             - name: PORT
-              value: "5000"
+              value: "3000"
             - name: CONN_STR
               value: "$ATLAS_CONNECTION_STRING"
 ---
@@ -39,7 +39,7 @@ spec:
     component: back
   ports:
     - port: 80
-      targetPort: 5050
+      targetPort: 3000
       protocol: TCP
       name: http
 ---

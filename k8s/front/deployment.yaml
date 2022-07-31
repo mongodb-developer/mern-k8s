@@ -20,7 +20,7 @@ spec:
         - name: mern-k8s-front
           image: cedricclyburn/mern-k8s-front
           ports: 
-            - containerPort: 5000
+            - containerPort: 3000
           env: 
             - name: BASE_URL
               value: "/api"
