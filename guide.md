@@ -1,3 +1,5 @@
+# Application Deployment in Kubernetes with the MongoDB Atlas Operator 
+
 Kubernetes is now an industry-wide standard when it comes to all things containers, but when it comes to deploying a database, it can be a bit tricky! However, tasks like adding persistence, ensuring redundancy, and database maintenance can be easily handled with [MongoDB Atlas](https://www.mongodb.com/atlas/database). Fortunately, the [MongoDB Atlas Operator](https://www.mongodb.com/kubernetes/atlas-operator) gives you the full benefits of using MongoDB Atlas, while still managing everything from within your Kubernetes cluster. In this tutorial, we’ll deploy a [MERN](https://www.mongodb.com/languages/mern-stack-tutorial) stack application in Kubernetes, install the Atlas operator, and connect our back end to Atlas using a Kubernetes secret.
 
 ## Pre-requisites
