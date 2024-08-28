@@ -1,6 +1,6 @@
 # MERN & Kubernetes Atlas Operator Demo Application 
 
-This repository contains the sample application for the [Application Deployment in Kubernetes with the MongoDB Atlas Operator](https://github.com/mongodb-developer/mern-k8s/blob/main/guide.md) tutorial.
+This repository contains the sample application for the [Application Deployment in Kubernetes with the MongoDB Atlas Operator](https://www.mongodb.com/developer/products/atlas/kubernetes-operator-application-deployment/) tutorial.
 
 ## How To Run
 
