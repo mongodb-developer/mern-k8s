@@ -13,7 +13,7 @@ const getMongoDB = async () => {
     console.log(`Connecting to database using ${logConnString}`);
     let db;
     try {
-      const client = await MongoClient.connect(CONN_STR, { useNewUrlParser: true, useUnifiedTopology: true });
+      const client = await MongoClient.connect(CONN_STR, {  });
       db = await client.db("mern-k8s");
       DB_CONNECTED = true;  
     } catch (e) {
